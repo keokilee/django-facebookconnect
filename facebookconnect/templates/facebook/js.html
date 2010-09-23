@@ -3,7 +3,7 @@
       FB.Facebook.init(
         "{{ facebook_api_key }}", 
         "{% url facebook_xd_receiver %}"{% if permissions %},
-        {permsToRequestOnConnect: {{permissions}}}
+        {permsToRequestOnConnect: "{{permissions}}"}
         {% endif %}
       )
     });
