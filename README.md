@@ -69,6 +69,10 @@ Setup a Facebook applicaiton here: http://upload.facebook.com. You'll need to ha
 
 The third setting is for pyfacebook. I don't know what it does completely. But it does cause pyfacebook to hold on to expired facebook sessions when it's False.
 
+If your app needs to use extended permissions (i.e. publish_stream or email), then you can specify the FACEBOOK_EXTENDED_PERMISSIONS setting.  For example, if you need to post to a user's wall and email them, add the following to the settings.
+
+    FACEBOOK_EXTENDED_PERMISSIONS = ('publish_stream', 'email')
+
 Caching
 -------
 
