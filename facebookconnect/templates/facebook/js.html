@@ -1,5 +1,12 @@
 <script type="text/javascript">
-    FB_RequireFeatures(["XFBML"], function() {FB.Facebook.init("{{ facebook_api_key }}", "{% url facebook_xd_receiver %}")});
+    FB_RequireFeatures(["XFBML"], function() {
+      FB.Facebook.init(
+        "{{ facebook_api_key }}", 
+        "{% url facebook_xd_receiver %}"{% if permissions %},
+        {permsToRequestOnConnect: {{permissions}}}
+        {% endif %}
+      )
+    });
 
     function facebookConnect(loginForm) {
         FB.Connect.requireSession();

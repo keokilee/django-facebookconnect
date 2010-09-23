@@ -31,7 +31,11 @@ register = template.Library()
     
 @register.inclusion_tag('facebook/js.html')
 def initialize_facebook_connect():
-    return {'facebook_api_key': settings.FACEBOOK_API_KEY}
+    return_dict = {'facebook_api_key': settings.FACEBOOK_API_KEY}
+    if settings.FACEBOOK_EXTENDED_PERMISSIONS:
+      return_dict["permissions"] = ','.join(settings.FACEBOOK_EXTENDED_PERMISSIONS)
+      
+    return return_dict
 
 @register.inclusion_tag('facebook/show_string.html', takes_context=True)
 def show_facebook_name(context, user):
